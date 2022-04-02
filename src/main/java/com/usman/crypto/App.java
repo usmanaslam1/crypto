@@ -8,7 +8,7 @@ import java.util.Scanner;
 import com.usman.crypto.ciphers.VigenereCipher;
 
 /**
- * Hello world!  vvv 
+ * Hello world!
  *
  */
 public class App {
