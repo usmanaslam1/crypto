@@ -16,7 +16,7 @@ public class App {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int x=checkInput(args);
 		String result="";
-		String key;//adding a comment
+		String key;
 		
 		if(x!=-1) {
 			
