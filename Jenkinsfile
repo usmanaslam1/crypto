@@ -1,6 +1,5 @@
 pipeline {
-    agent any
-   
+    agent any   
     environment {
         dockerImage=''
         registry='usmanaslam/crypto'
