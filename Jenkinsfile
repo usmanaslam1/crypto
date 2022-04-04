@@ -21,10 +21,12 @@ pipeline {
 		}
 	}
   	stage('SonarQube Analysis') {
-    		withSonarQubeEnv() {
-		        echo "++++++++++++++++++++++++++++SONAR QUBE++++++++++++++++++++++++++++++++++"
-      			sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test"
-    		}
+		steps{
+  	  		withSonarQubeEnv() {
+			        echo "++++++++++++++++++++++++++++SONAR QUBE++++++++++++++++++++++++++++++++++"
+      				sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test"
+    			}
+		}
   	}
         stage('Build') {
             steps {
