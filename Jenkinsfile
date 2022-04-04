@@ -25,7 +25,7 @@ pipeline {
 			script{
   	  			withSonarQubeEnv() {
 			        	echo "++++++++++++++++++++++++++++SONAR QUBE++++++++++++++++++++++++++++++++++"
-      					sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test"
+      					sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test2"
     				}
 			}
 		}
