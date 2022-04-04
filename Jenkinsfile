@@ -13,11 +13,19 @@ pipeline {
     }
 
     stages {
+
+	stage('Checkout') {
+		steps {
+		       checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/usmanaslam75/crypto']]])
+		}
+	}
+  	stage('SonarQube Analysis') {
+    		withSonarQubeEnv() {
+      			sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test"
+    		}
+  	}
         stage('Build') {
             steps {
-                // Get some code from a GitHub repository
-                //git 'https://github.com/usmanaslam75/crypto.git'
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/usmanaslam75/crypto']]])
                 sh "mvn clean package"
             }
             post {
@@ -27,6 +35,8 @@ pipeline {
                 }
             }
         }
+
+
         stage('Docker Image') {
             steps {
                 script{
