@@ -16,16 +16,19 @@ pipeline {
 
 	stage('Checkout') {
 		steps {
-		       checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/usmanaslam75/crypto']]])
+		        echo "++++++++++++++++++++++++++++CHECKOUT++++++++++++++++++++++++++++++++++"
+			checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/usmanaslam75/crypto']]])
 		}
 	}
   	stage('SonarQube Analysis') {
     		withSonarQubeEnv() {
+		        echo "++++++++++++++++++++++++++++SONAR QUBE++++++++++++++++++++++++++++++++++"
       			sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test"
     		}
   	}
         stage('Build') {
             steps {
+		echo "++++++++++++++++++++++++++++BUILD++++++++++++++++++++++++++++++++++"
                 sh "mvn clean package"
             }
             post {
