@@ -30,7 +30,7 @@ pipeline {
 			}
 		}
   	}
-        stage('Build') {
+       stage('Build') {
             steps {
 		echo "++++++++++++++++++++++++++++BUILD++++++++++++++++++++++++++++++++++"
                 sh "mvn clean package"
