@@ -1,4 +1,4 @@
-	package com.usman.crypto.ciphers;
+package com.usman.crypto.ciphers;
 
 public class VigenereCipher {
 
